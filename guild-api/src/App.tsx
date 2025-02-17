@@ -1,6 +1,7 @@
 import './App.css'
 import { fetchRoleNames } from './guild/api'
 import { guildId } from './guild/api'
+import { RoninButton } from '@roninbuilders/modal-wagmi/react'
 
 //fetchUserMembershipsInGuild(userAddress, id)
 //fetchLeaderboard(urlName)
@@ -16,8 +17,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      {/**@ts-expect-error needs fix lib side */}
-      <ronin-button/>
+      <RoninButton/>
     </>
   )
 }

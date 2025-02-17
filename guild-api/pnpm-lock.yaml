@@ -12,8 +12,8 @@ importers:
         specifier: ^2.6.9
         version: 2.6.9(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@roninbuilders/modal-wagmi':
-        specifier: ^0.2.4
-        version: 0.2.4(itrjnfx4bemtl32vjrezrspop4)
+        specifier: ^0.2.5
+        version: 0.2.5(c9951912eab40045b228ddb590a8ae55)
       '@tanstack/react-query':
         specifier: ^5.66.3
         version: 5.66.3(react@19.0.0)
@@ -354,6 +354,11 @@ packages:
   '@lit-labs/ssr-dom-shim@1.3.0':
     resolution: {integrity: sha512-nQIWonJ6eFAvUUrSlwyHDm/aE8PBDu5kRpL0vHMg6K8fK3Diq1xdPjTnsJSwxABhaZ+5eBi1btQB5ShUTKo4nQ==}
 
+  '@lit/react@1.0.7':
+    resolution: {integrity: sha512-cencnwwLXQKiKxjfFzSgZRngcWJzUDZi/04E0fSaF86wZgchMdvTyu+lE36DrUfvuus3bH8+xLPrhM1cTjwpzw==}
+    peerDependencies:
+      '@types/react': 17 || 18 || 19
+
   '@lit/reactive-element@1.6.3':
     resolution: {integrity: sha512-QuTgnG52Poic7uM1AN5yJ09QMe0O28e10XzSvWDz02TJiiKee4stsiownEIadWm8nYzyDAyT+gKzUoZmiWQtsQ==}
 
@@ -613,8 +618,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@roninbuilders/modal-ui@0.2.3':
-    resolution: {integrity: sha512-JIxBdbvoCxLcuZl85OBkWSlBY5mSSrBHZ+tda2W+3UPIdw5sTesEFbo9xvc3HuE8h95eVN8xlTst8GNo8KRLsA==}
+  '@roninbuilders/modal-ui@0.2.5':
+    resolution: {integrity: sha512-KpDmUU3DXrEEbtFtMq/TKy/zbRb7kfsZsk7yyJKsxhtxE2HkfxahEPpVCTbnsxt092Swo3mCDQJxONE0y2p1/A==}
     peerDependencies:
       typescript: '>=5'
       vanilla-cafe: '>=0'
@@ -622,35 +627,32 @@ packages:
       typescript:
         optional: true
 
-  '@roninbuilders/modal-ui@0.2.4':
-    resolution: {integrity: sha512-uOTjQbovFFIm2MgfKEHZb/OnaGBH8n4GZKeYXYY0O2qk56KTeKBJyYXMY0lRmJK+oatbJ1/QCjB2yN1SVvhN+g==}
-    peerDependencies:
-      typescript: '>=5'
-      vanilla-cafe: '>=0'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@roninbuilders/modal-wagmi@0.2.4':
-    resolution: {integrity: sha512-wmg/xt5sK/3LvjHDHCpDWECaOZk8IQqiz9//GhMf6qbfc//w7qe3e1EsJs6cfgJv1WJ7F0GHpQKaZj2MKqLxwQ==}
+  '@roninbuilders/modal-wagmi@0.2.5':
+    resolution: {integrity: sha512-vKlGG/ED/+K0U02mlHnJXNpWiLQKdO/Q+iM91iznR9w6nLFRFrXU9YlcLtmI/40eMAxRotnWsIf21Bm2OO5I8g==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
       '@wagmi/core': '>=2.0.0'
+      react: '>=16'
       typescript: '>=5'
       vanilla-cafe: '>=0'
       viem: '>=2.0.0'
     peerDependenciesMeta:
+      react:
+        optional: true
       typescript:
         optional: true
 
-  '@roninbuilders/modal@0.2.6':
-    resolution: {integrity: sha512-gfV9vQGUdIQDBLoYOffWOJtoIOdLOmIeLehaTAUU8eRemHH44lFR1YQ1hqLcQtxARu9SzylJzgt2d9oxnbdbvA==}
+  '@roninbuilders/modal@0.2.7':
+    resolution: {integrity: sha512-LKfmrvtdY6isD0IyXBQDcS1qhnT080W4g4UC/avN6n2mnjLN/T/uqRjzaQrH5f+Jjh/2Syhaznn7fYfn5gKFWQ==}
     peerDependencies:
       '@roninbuilders/siwe': '>=0'
+      react: '>=16'
       typescript: '>=5'
       vanilla-cafe: '>=0'
     peerDependenciesMeta:
       '@roninbuilders/siwe':
+        optional: true
+      react:
         optional: true
       typescript:
         optional: true
@@ -659,15 +661,6 @@ packages:
     resolution: {integrity: sha512-is+UXgNx/GrnlbeOiyvztR3/omy2MeMMkzBJUyQOFRX0jrbbTK7ZzJ4dRPV01DMpPFOkF8yXHcWXm6Co1VAdrg==}
     peerDependencies:
       typescript: '>=5'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@roninbuilders/siwe@0.0.2':
-    resolution: {integrity: sha512-GnhhJ9L3zz3T1pzLKlOq0bG+h6eQ1KwpRdlRnw2qP0zSAyAc6O9EQf4Jqy13NgB7qwljfEnsUN11PPvLCDzBNA==}
-    peerDependencies:
-      typescript: '>=5'
-      vanilla-cafe: '>=0'
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -1804,6 +1797,7 @@ packages:
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -2921,6 +2915,10 @@ snapshots:
 
   '@lit-labs/ssr-dom-shim@1.3.0': {}
 
+  '@lit/react@1.0.7(@types/react@19.0.10)':
+    dependencies:
+      '@types/react': 19.0.10
+
   '@lit/reactive-element@1.6.3':
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.3.0
@@ -3057,7 +3055,7 @@ snapshots:
     dependencies:
       '@ethereumjs/tx': 4.2.0
       '@metamask/superstruct': 3.1.0
-      '@noble/hashes': 1.3.2
+      '@noble/hashes': 1.7.1
       '@scure/base': 1.2.4
       '@types/debug': 4.1.12
       debug: 4.4.0
@@ -3071,7 +3069,7 @@ snapshots:
     dependencies:
       '@ethereumjs/tx': 4.2.0
       '@metamask/superstruct': 3.1.0
-      '@noble/hashes': 1.3.2
+      '@noble/hashes': 1.7.1
       '@scure/base': 1.2.4
       '@types/debug': 4.1.12
       debug: 4.4.0
@@ -3239,22 +3237,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.34.8':
     optional: true
 
-  '@roninbuilders/modal-ui@0.2.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)':
-    dependencies:
-      '@roninbuilders/rns': 0.0.11(typescript@5.7.3)
-      '@roninbuilders/siwe': 0.0.2(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
-      blo: 1.1.1
-      lit: 2.8.0
-      qrcode: 1.5.3
-      vanilla-cafe: 0.1.5(typescript@5.7.3)
-    optionalDependencies:
-      typescript: 5.7.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - zod
-
-  '@roninbuilders/modal-ui@0.2.4(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)':
+  '@roninbuilders/modal-ui@0.2.5(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)':
     dependencies:
       '@roninbuilders/rns': 0.0.11(typescript@5.7.3)
       '@roninbuilders/siwe': 0.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
@@ -3269,16 +3252,18 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@roninbuilders/modal-wagmi@0.2.4(itrjnfx4bemtl32vjrezrspop4)':
+  '@roninbuilders/modal-wagmi@0.2.5(c9951912eab40045b228ddb590a8ae55)':
     dependencies:
-      '@roninbuilders/modal': 0.2.6(@roninbuilders/siwe@0.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2))(@types/react@19.0.10)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
-      '@roninbuilders/modal-ui': 0.2.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
+      '@lit/react': 1.0.7(@types/react@19.0.10)
+      '@roninbuilders/modal': 0.2.7(@roninbuilders/siwe@0.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2))(@types/react@19.0.10)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
+      '@roninbuilders/modal-ui': 0.2.5(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
       '@sky-mavis/waypoint': 4.1.0
       '@wagmi/connectors': 5.7.7(@types/react@19.0.10)(@wagmi/core@2.16.4(@tanstack/query-core@5.66.3)(@types/react@19.0.10)(react@19.0.0)(typescript@5.7.3)(use-sync-external-store@1.4.0(react@19.0.0))(viem@2.23.2(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2)))(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(viem@2.23.2(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2))(zod@3.24.2)
       '@wagmi/core': 2.16.4(@tanstack/query-core@5.66.3)(@types/react@19.0.10)(react@19.0.0)(typescript@5.7.3)(use-sync-external-store@1.4.0(react@19.0.0))(viem@2.23.2(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2))
       vanilla-cafe: 0.1.5(typescript@5.7.3)
       viem: 2.23.2(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2)
     optionalDependencies:
+      react: 19.0.0
       typescript: 5.7.3
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -3302,20 +3287,21 @@ snapshots:
       - db0
       - encoding
       - ioredis
-      - react
       - uploadthing
       - utf-8-validate
       - zod
 
-  '@roninbuilders/modal@0.2.6(@roninbuilders/siwe@0.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2))(@types/react@19.0.10)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)':
+  '@roninbuilders/modal@0.2.7(@roninbuilders/siwe@0.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2))(@types/react@19.0.10)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)':
     dependencies:
-      '@roninbuilders/modal-ui': 0.2.4(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
+      '@lit/react': 1.0.7(@types/react@19.0.10)
+      '@roninbuilders/modal-ui': 0.2.5(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
       '@sky-mavis/waypoint': 4.1.0
       '@w3vm/core': 0.0.4(typescript@5.7.3)
       '@w3vm/walletconnect': 0.0.9(@types/react@19.0.10)(@w3vm/core@0.0.4(typescript@5.7.3))(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))
       vanilla-cafe: 0.1.5(typescript@5.7.3)
     optionalDependencies:
       '@roninbuilders/siwe': 0.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)
+      react: 19.0.0
       typescript: 5.7.3
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -3338,7 +3324,6 @@ snapshots:
       - db0
       - encoding
       - ioredis
-      - react
       - uploadthing
       - utf-8-validate
       - zod
@@ -3348,17 +3333,6 @@ snapshots:
       '@zoltu/ethereum-abi-encoder': 5.0.4
     optionalDependencies:
       typescript: 5.7.3
-
-  '@roninbuilders/siwe@0.0.2(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)':
-    dependencies:
-      vanilla-cafe: 0.1.5(typescript@5.7.3)
-      viem: 2.22.17(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2)
-    optionalDependencies:
-      typescript: 5.7.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - zod
 
   '@roninbuilders/siwe@0.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(vanilla-cafe@0.1.5(typescript@5.7.3))(zod@3.24.2)':
     dependencies:
