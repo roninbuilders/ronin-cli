@@ -5,6 +5,16 @@
   text-align: center;
 }
 
+.container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  gap: 30px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

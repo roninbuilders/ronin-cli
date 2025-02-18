@@ -1,0 +1,42 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .roleItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background: #f9f9f9;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  
+  .roleName {
+    color: #007aff;
+  }
+  
+  .roleId {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  

@@ -1,24 +1,28 @@
 import './App.css'
-import { fetchRoleNames } from './guild/api'
-import { guildId } from './guild/api'
 import { RoninButton } from '@roninbuilders/modal-wagmi/react'
-
-//fetchUserMembershipsInGuild(userAddress, id)
-//fetchLeaderboard(urlName)
-fetchRoleNames(guildId)
+import RoleList from './components/RoleList'
+import { useAccount } from 'wagmi'
+import { useGuild } from './guild/hooks/useGuild'
+import { useRoleNames } from './guild/hooks/useRoleNames'
 
 function App() {
+  const { address } = useAccount()
+
+  console.log(address)
+
+  const { data: guild, isError: isGuildError, isLoading: isGuildLoading } = useGuild({ name: "ronin" })
+
+  const { data: roleList, isLoading: isRoleNamesLoading } = useRoleNames({
+    guildId: guild?.id || 0,
+    enabled: Boolean(guild) && !isGuildError
+  })
+
   return (
-    <>
-      <div>
-      <h1>Vite + React</h1>
-          Edit <code>src/App.tsx</code> and save to test HMR
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <section className='container'>
+        { (isGuildLoading || isRoleNamesLoading) && <div>Loading Role Names...</div> }
+      {roleList && <RoleList roles={roleList} />}
       <RoninButton/>
-    </>
+    </section>
   )
 }
 
