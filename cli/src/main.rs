@@ -5,8 +5,6 @@ use std::io::Cursor;
 use reqwest;
 use tar::Archive;
 use flate2::read::GzDecoder;
-use std::env;
-use std::path::PathBuf;
 
 #[derive(Parser)]
 #[command(name = "create-ronin")]
@@ -14,9 +12,12 @@ use std::path::PathBuf;
 struct Cli {}
 
 fn main() {
+    print_ascii_logo(); // Show ASCII art logo
+
     let _cli = Cli::parse();
 
     let templates = vec![
+        "Next + Ronin Modal with Wagmi",
         "React + Ronin Modal with Wagmi",
     ];
 
@@ -29,6 +30,8 @@ fn main() {
 
     let template_urls = vec![
         "https://github.com/your-repo/react-template/archive/refs/heads/main.tar.gz",
+        "https://github.com/your-repo/svelte-template/archive/refs/heads/main.tar.gz",
+        "https://github.com/your-repo/solid-template/archive/refs/heads/main.tar.gz",
     ];
 
     let url = template_urls[selection];
@@ -39,6 +42,36 @@ fn main() {
     println!("  cd new-project");
     println!("  pnpm install");
     println!("  pnpm dev");
+}
+
+fn print_ascii_logo() {
+    let ascii_art = r#"
+      ###############################      
+     #################################     
+     #################################     
+     ########*+=============+*########     
+     #######=.               .=#######     
+     ######*-     :#####:     -*######     
+     ######*-     :#####:     -*######     
+     ######*-     :#####:     -*######     
+     ######*-     :#####:     -*######     
+     ######*-               .=*#######     
+     ######*-     :#####:    .+#######     
+     ######*-     :#####:     -*######     
+     ######*-     :#####:     -*######     
+     ######*-     :#####:     -*######     
+     #######=     :#####:     =#######     
+     ########+:   :#####:   :+########     
+     ##########*- :#####: -*##########     
+       #############################       
+         #########################         
+           #####################           
+              ################             
+                ###########                
+                  #######                  
+    "#;
+
+    println!("{}", ascii_art);
 }
 
 fn download_and_extract(url: &str, folder_name: &str) {
