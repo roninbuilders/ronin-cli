@@ -1,9 +1,10 @@
 use clap::{Parser};
-use dialoguer::{theme::ColorfulTheme, Select};
+use dialoguer::{theme::ColorfulTheme, Select, Input};
 use indicatif::{ProgressBar, ProgressStyle};
 use std::fs;
 use std::process::Command;
 use std::path::Path;
+use fs_extra::dir::{copy, CopyOptions};
 
 #[derive(Parser)]
 #[command(name = "create-ronin")]
@@ -12,8 +13,6 @@ struct Cli {}
 
 fn main() {
     print_ascii_logo();
-
-    let _cli = Cli::parse();
 
     let templates = vec![
         "React + Ronin Modal with Wagmi",
@@ -27,9 +26,22 @@ fn main() {
         .interact()
         .unwrap();
 
+    let project_name: String = Input::new()
+        .with_prompt("Enter project name")
+        .allow_empty(true) // Allow user to press Enter
+        .interact_text()
+        .unwrap();
+
+    // Determine the destination folder
+    let destination = if project_name.trim().is_empty() {
+        ".".to_string() // Install in root directory
+    } else {
+        project_name.clone() // Clone to prevent move issues
+    };
+
     let template_paths = vec![
         "templates/react-ronin-modal",
-        "templates/next-ronin-modal", // Add correct path if available
+        "templates/next-ronin-modal",
     ];
 
     let selected_template = template_paths[selection];
@@ -37,11 +49,13 @@ fn main() {
     fetch_and_copy_template(
         "https://github.com/roninbuilders/ronin-cli.git",
         selected_template,
-        "new-project",
+        &destination,
     );
 
     println!("\n✅ Template downloaded! Next steps:");
-    println!("  cd new-project");
+    if destination != "." {
+        println!("  cd {}", destination);
+    }
     println!("  pnpm install");
     println!("  pnpm dev");
 }
@@ -50,13 +64,13 @@ fn fetch_and_copy_template(repo_url: &str, template_path: &str, destination: &st
     let temp_repo_dir = "ronin-cli-temp";
 
     println!("🚀 Cloning template from GitHub...");
-    
+
     let pb = ProgressBar::new(100);
     pb.set_style(ProgressStyle::default_bar()
         .template("{msg} [{bar:40}] {pos}%")
         .unwrap());
     pb.set_message("Cloning repository...");
-    
+
     let clone_status = Command::new("git")
         .args(["clone", "--depth=1", repo_url, temp_repo_dir])
         .status();
@@ -68,35 +82,31 @@ fn fetch_and_copy_template(repo_url: &str, template_path: &str, destination: &st
         return;
     }
 
+    // Run `git clean -fdx` to remove any ignored files in case `.gitignore` is hiding them
+    let _ = Command::new("git")
+        .args(["-C", temp_repo_dir, "clean", "-fdx"])
+        .status();
+
     let full_template_path = format!("{}/{}", temp_repo_dir, template_path);
-    
+
     if !Path::new(&full_template_path).exists() {
         println!("❌ Template not found: {}", full_template_path);
+        fs::remove_dir_all(temp_repo_dir).unwrap_or_else(|_| println!("⚠️ Warning: Failed to remove temp folder."));
         return;
     }
 
     println!("📂 Copying template to `{}`...", destination);
-    pb.set_message("Copying files...");
 
-    // Create destination folder
-    fs::create_dir_all(destination).unwrap();
+    let mut options = CopyOptions::new();
+    options.copy_inside = true;
 
-    for entry in fs::read_dir(&full_template_path).unwrap() {
-        let entry = entry.unwrap();
-        let path = entry.path();
-        let dest_path = Path::new(destination).join(entry.file_name());
-
-        if path.is_dir() {
-            fs::create_dir_all(&dest_path).unwrap();
-        } else {
-            fs::copy(&path, &dest_path).unwrap();
-        }
+    if let Err(e) = copy(&full_template_path, destination, &options) {
+        println!("❌ Failed to copy template: {}", e);
+        return;
     }
 
-    pb.finish_with_message("✅ Template copied!");
-
     println!("🧹 Cleaning up...");
-    fs::remove_dir_all(temp_repo_dir).unwrap();
+    fs::remove_dir_all(temp_repo_dir).unwrap_or_else(|_| println!("⚠️ Warning: Failed to remove temp folder."));
     println!("✅ Done!");
 }
 
