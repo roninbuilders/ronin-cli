@@ -1,0 +1,30 @@
+# Rust-specific ignores
+target/
+Cargo.lock
+
+# If using Rust's debugging tools
+*.rs.bk
+
+# If using Clippy for linting
+clippy.toml
+
+# If using Rustfmt for formatting
+rustfmt.toml
+
+# Prevent binary files from being committed
+bin/create-ronin
+
+# Ignore compiled binaries
+*.exe
+*.dll
+*.dylib
+*.so
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp

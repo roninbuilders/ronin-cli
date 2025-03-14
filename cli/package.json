@@ -1,0 +1,18 @@
+{
+  "name": "create-ronin",
+  "version": "1.0.0",
+  "description": "CLI for creating Ronin web templates",
+  "bin": {
+    "create-ronin": "./bin/create-ronin.js"
+  },
+  "os": ["darwin", "linux", "win32"],
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "bin/create-ronin",
+    "bin/create-ronin.js"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
