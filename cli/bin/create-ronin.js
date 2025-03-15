@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { execSync } from "child_process";
-import fs from "fs-extra"; // FIX: Default import for CommonJS module
+import fs from "fs-extra";
 import { join } from "path";
 import inquirer from "inquirer";
 import ora from "ora";
@@ -66,12 +66,6 @@ const fetchAndCopyTemplate = async (templatePath, destination) => {
     process.exit(1);
   }
 
-  // Remove .git directory to prevent issues
-  try {
-    rmSync(join(tempRepoDir, ".git"), { recursive: true, force: true });
-    execSync(`rm -rf ${join(tempRepoDir, ".git")}`); // Ensure `.git` is removed
-  } catch {}
-
   // Verify template path
   const fullTemplatePath = join(tempRepoDir, templatePath);
   if (!existsSync(fullTemplatePath)) {
@@ -95,7 +89,6 @@ const fetchAndCopyTemplate = async (templatePath, destination) => {
   console.log(chalk.green("🧹 Cleaning up... Done!"));
 };
 
-// Main Function
 const main = async () => {
   printAsciiLogo();
 
