@@ -1,18 +1,17 @@
 {
   "name": "create-ronin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for creating Ronin web templates",
   "bin": {
     "create-ronin": "./bin/create-ronin.js"
   },
-  "os": ["darwin", "linux", "win32"],
-  "engines": {
-    "node": ">=16"
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "ora": "^7.0.1",
+    "inquirer": "^9.2.7",
+    "simple-git": "^3.5.0",
+    "fs-extra": "^11.1.1"
   },
-  "files": [
-    "bin/create-ronin",
-    "bin/create-ronin.js"
-  ],
   "author": "Your Name",
   "license": "MIT"
 }
