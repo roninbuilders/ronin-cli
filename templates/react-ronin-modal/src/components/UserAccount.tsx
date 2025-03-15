@@ -4,7 +4,7 @@ export default function UserAccount() {
 	const { address, isConnected } = useAccount()
 	const chainId = useChainId()
 
-	if(!isConnected) {
+	if (!isConnected) {
 		return <p>Not connected</p>
 	}
 
