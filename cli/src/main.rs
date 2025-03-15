@@ -111,6 +111,9 @@ fn fetch_and_copy_template(repo_url: &str, template_path: &str, destination: &st
 }
 
 fn print_ascii_logo() {
+    let blue = "\x1b[34m"; // ANSI escape code for blue
+    let reset = "\x1b[0m"; // Reset color
+
     let ascii_art = r#"
       ###############################      
      #################################     
@@ -137,5 +140,5 @@ fn print_ascii_logo() {
                   #######                  
     "#;
 
-    println!("{}", ascii_art);
+    println!("{}{}{}", blue, ascii_art, reset);
 }

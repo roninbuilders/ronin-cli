@@ -7,6 +7,7 @@ import { saigon } from 'viem/chains'
 import { createRoninModal } from '@roninbuilders/modal-wagmi'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
+
 import Home from './routes/Home'
 import About from './routes/About'
 import Layout from './layouts'
