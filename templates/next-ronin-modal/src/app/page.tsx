@@ -10,7 +10,7 @@ function Home() {
           onin Builders
         </p>
       </span>
-      <p className="text-lg opacity-70 max-w-[1000px] leading-[24.2px] sm:text-[18px] sm: xs:text-[16px] xxs:text-[14px] sm:text-red-300">
+      <p className="text-lg opacity-70 max-w-[1000px] leading-[24.2px] sm:text-[18px] sm: xs:text-[16px] xxs:text-[14px]">
         Welcome to Ronin CLI.
       </p>
       <div className="flex flex-col items-center justify-center gap-4">
